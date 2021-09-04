@@ -33,7 +33,6 @@ body {
    }
 }
 
-
 /*Styles for header*/
 .header {
     &__top {
@@ -86,12 +85,11 @@ body {
     }
 
     &__nav {
-        position: relative;
         background-color:#FFFFFF;
         width: 100%;
         height: 5vmax;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -117,10 +115,26 @@ body {
 		}
     }
 
-    &__search{
-        position: absolute;
-        cursor: pointer;
-        right: 3vmax;
+    &__search_panel{
+        position: relative;
+        z-index: 5;
+        height: inherit;
+        background-color: #FFFFFF;
+        padding: 1vmax;
+        input{
+            width: 100%;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            padding: 0.7vmax 3vmax 0.7vmax 0.7vmax;
+            height: 2.8vmax;
+        }
+        i{
+            position: absolute;
+            top: 2vmax;
+            right: 2vmax;
+            z-index: 6;
+            cursor: pointer;
+        }
     }
 }
 
@@ -128,13 +142,14 @@ body {
 .banner {
     .container {
     display: flex;
+    background: url(../img/banner-img.jpg) top center/cover no-repeat;
     }
     &__info {
+        background-color: rgba($color: #000000, $alpha: 0.4);
         height: 28vmax;
-        background: url(../img/banner-img.jpg) top center/cover no-repeat;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         width: 100%;
         color: #A4AB82;
@@ -180,7 +195,7 @@ body {
         align-items: flex-start;
         .product{
             margin: 0.5vmax;
-            width: 16vw;
+            max-width: 16vw;
             background-color: #FFFFFF;
             border-radius: 8px;
             display: flex;
@@ -319,16 +334,144 @@ body {
     }
 }
 
-@media screen and (max-width: 1200px) {
-    .products .product{
-        width: 21vw;
+/*Styles for footer*/
+.footer {
+    &__wrapper {
+        padding: 1.5vmax 0;
+        background-color: #FFFFFF;
+        text-align: center;
+    }
+
+    &__text {
+        font-weight: 700;
+        margin-bottom: 0.8vmax;
+    }
+
+    &__media {
+        i{
+            margin: 0 1vmax;
+            color: #000000;
+            font-size: 2vw;
+            transition: all 0.5s ease;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
     }
 }
 
-@media screen and (max-width: 768px) {
-    .products .product{
-        width: 32vw;
+/*Styles for cart*/
+.cart{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    height: 100vh;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: -3px 2px 5px #2F2F2F;
+    transition: all 0.5s ease-in;
+    transform: translateX(100%);
+    &.open{
+        transform: translateX(0);
+    }
+    &__title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 9vmax;
+        padding: 0 2vmax;
+        background-color: #A4AB82;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 2vmax;
+        line-height: 2vmax;
+        cursor: pointer;
+    }
+    &__content{
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       padding: 2vmax;
+    }
+    &__button{
+        border: 1px solid #000000;
     }
 }
+
+/*Style for modal*/
+.modal {
+    position: fixed;
+    z-index: 102;
+    width: 20vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: #A4AB82;
+    padding: 1vmax;
+    &_button {
+        width: 100%;
+        background-color: transparent;
+        font-size: inherit;
+        font-weight: 700;
+        letter-spacing: 0.15vw;
+        text-transform: uppercase;
+        border-radius: 5px;
+        padding: 0.6vw 1vw;
+        transition: all 0.5s ease;
+        &:hover,
+        &:focus,
+        &:active{
+            background-color: #EAEAEA;
+        }
+    }
+
+    &__close {
+        font-size: 2vmax;
+        text-align: end;
+        margin-bottom: 1vmax;
+    }
+
+    &__content {
+        
+        &_inputs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__input {
+        border-radius: 5px;
+        padding: 0.5vmax;
+        margin-bottom: 0.5vmax;
+        font-size: 1.5vmax;
+    }
+    &.open{
+        display: block;
+    }
+}
+
+.black-fill{
+    position: fixed;
+    z-index: 101;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    &.open{
+        display: block;
+    }
+}
+
 
 

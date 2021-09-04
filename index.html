@@ -58,8 +58,8 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="header__search">
-                    <i class="fas fa-search"></i>
+                <div class="header__search_panel">
+                    <input type="text" placeholder="Search"><i class="fas fa-search"></i>
                 </div>
             </div>
         </div>
@@ -67,6 +67,7 @@
     <div class="banner">
         <div class="container">
             <div class="banner__info">
+                <p>NEW</p>
                 <h2><span>Fall'21</span>Collection</h2>
                 <p>BUY ONCE, WEAR FOREVER</p>
             </div>
@@ -222,10 +223,43 @@
                 <button class="products__button">Load More</button>
             </div>
     </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <div class="footer__text">FOLLOW US</div>
+                <div class="footer__media">
+                    <a href="#!" target="_blank"><i class="fab fa-google-plus-square"></i></a>
+                    <a href="#!" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#!" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="cart">
+        <div class="cart__title">
+            <p>YOUR CART</p>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="cart__content">
+            You have no items in your Shopping Cart.
+        </div>
+        <button class="cart__button btn">
+            CONTINUE SHOPPING
+        </button>
+    </div>
+    <div class="modal">
+        <div class="modal__close"><i class="fas fa-times"></i></div>
+        <div class="modal__content">
+            <form action="">
+                <div class="modal__content_inputs">
+                    <input class="modal__input" type="email" name="email" placeholder="Your email">
+                    <input class="modal__input" type="password" name="password" placeholder="Your password">
+                    <button class="modal_button">SIGN IN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="black-fill"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
