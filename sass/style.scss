@@ -1,11 +1,20 @@
 @import "reset";
 
+//Adaptive font
+$maxWidth: 1366;
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
 body {
     background-color: #2F2F2F;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 1vw;
-    line-height: 1.33vmax;
+    //font-size: 1vw;
+    @include adaptiv-font(16, 8);
+    //line-height: 1.33vmax;
 }
 
 .container {
@@ -36,7 +45,13 @@ body {
 /*Styles for header*/
 .header {
     &__top {
-        width: 100%;
+        position: fixed;
+        padding: 0 1vw;
+        z-index: 50;
+        top:0;
+        left: 2vw;
+        right: 2vw;
+        background-color: #2F2F2F;
         height: 9vmax;
         display: flex;
         justify-content: space-between;
@@ -44,9 +59,15 @@ body {
         color: #FFFFFF;
     }
 
+    &__buttons{
+        display: flex;
+        order:3
+    }
+
     &__sign-in{
         border: 1px solid #EAEAEA;
         color: #FFFFFF;
+        margin-right: 1vw;
         i{
             margin-right: 1vmax;
         }
@@ -63,21 +84,29 @@ body {
         }
     } 
 
-    &__location, &__currency{
-        color: #909090;
-        span {
-            letter-spacing: 0.1vw;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            cursor: pointer;
-            margin-left: 0.5vmax;
+    &__filters{
+        order:1;
+        &_location{
+            margin-bottom: 1vh;
+        }
+        &_location, &_currency{
+            color: #909090;
+            span {
+                letter-spacing: 0.1vw;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                cursor: pointer;
+                margin-left: 0.5vmax;
+            }
         }
     }
 
     &__logo {
+        order:2;
         font-family: 'Kaisei HarunoUmi', serif;
         font-weight: 700;
-        font-size: 3.5vmax;
+        //font-size: 3.5vmax;
+        @include adaptiv-font(54, 24);
         &_link{
             display: block;
             color: #FFFFFF;
@@ -85,6 +114,7 @@ body {
     }
 
     &__nav {
+        margin-top: 9vmax;
         background-color:#FFFFFF;
         width: 100%;
         height: 5vmax;
@@ -121,19 +151,14 @@ body {
         height: inherit;
         background-color: #FFFFFF;
         padding: 1vmax;
+        width: 100%;
         input{
+            @include adaptiv-font(18, 8);
             width: 100%;
-            border: 2px solid #000000;
-            border-radius: 20px;
+            border: 1px solid #b6b6b6;
+            border-radius: 20vmax;
             padding: 0.7vmax 3vmax 0.7vmax 0.7vmax;
             height: 2.8vmax;
-        }
-        i{
-            position: absolute;
-            top: 2vmax;
-            right: 2vmax;
-            z-index: 6;
-            cursor: pointer;
         }
     }
 }
@@ -154,7 +179,8 @@ body {
         width: 100%;
         color: #A4AB82;
         text-shadow: 2px 2px 1px #000000;
-        font-size: 7vw;
+        //font-size: 7vw;
+        @include adaptiv-font(80, 30);
         line-height: 7vw;
         font-weight: 700;
         text-align: center;
@@ -162,7 +188,8 @@ body {
             font-family: 'Kaisei HarunoUmi', serif;
         }
         p{
-            font-size: 2vw;
+            //font-size: 2vw;
+            @include adaptiv-font(24, 12);
         }
     }
 }
@@ -180,9 +207,10 @@ body {
 .products{
     padding: 1vmax;
     background-color: #EAEAEA;
-    width: 70vw;
+    width: 70%;
     &__title{
-        font-size: 2vw;
+        //font-size: 2vw;
+        @include adaptiv-font(20, 8);
         font-weight: 700;
         text-transform: uppercase;
         text-align: center;
@@ -194,8 +222,8 @@ body {
         justify-content: flex-start;
         align-items: flex-start;
         .product{
-            margin: 0.5vmax;
-            max-width: 16vw;
+            margin: 1%;
+            width: 23%;
             background-color: #FFFFFF;
             border-radius: 8px;
             display: flex;
@@ -224,6 +252,7 @@ body {
     &__button{
         width: 100%;
         font-size: 1.25vmax;
+
         color: #FFFFFF;
         background-color: #A4AB82;
         border-radius: 4px;
@@ -238,7 +267,7 @@ body {
 
 .filters{
     background-color:#EAEAEA;
-    width: 24vw;
+    width: 30%;
     &__category, &__color, &__size{
         margin-top: 2vmax;
         width: 100%;
@@ -351,7 +380,8 @@ body {
         i{
             margin: 0 1vmax;
             color: #000000;
-            font-size: 2vw;
+            //font-size: 2vw;
+            @include adaptiv-font(24, 16);
             transition: all 0.5s ease;
             &:hover{
                 transform: scale(1.2);
@@ -407,17 +437,19 @@ body {
 .modal {
     position: fixed;
     z-index: 102;
-    width: 20vw;
+    width: 30%;
     height: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    background-color: #A4AB82;
+    background-color: #EAEAEA;
     padding: 1vmax;
     &_button {
-        width: 100%;
-        background-color: transparent;
+        margin: 3vmax 0;
+        width: 80%;
+        background-color: #A4AB82;
+        color: #FFFFFF;
         font-size: inherit;
         font-weight: 700;
         letter-spacing: 0.15vw;
@@ -428,7 +460,7 @@ body {
         &:hover,
         &:focus,
         &:active{
-            background-color: #EAEAEA;
+            transform: scale(0.98);
         }
     }
 
@@ -449,6 +481,7 @@ body {
     }
 
     &__input {
+        width: 80%;
         border-radius: 5px;
         padding: 0.5vmax;
         margin-bottom: 0.5vmax;
@@ -473,5 +506,50 @@ body {
     }
 }
 
+/*Media*/
+@media screen and (max-width: 1199px) {
+    .header .nav__item {
+        padding: 0 2vmax;
+    }
+    .products .product {
+        margin: 1% 0.5%;
+        width: 32%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cart{
+        width: 50vw;
+    }
+    .products .product {
+        margin: 1%;
+        width: 48%;
+    }
+    .modal{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .cart{
+        width: 100%;
+    }
+    .header__nav .nav{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header__top{
+        .header__filters{
+            order:2;
+        }
+        .header__logo{
+            order:1;
+        }
+    }
+    .products .product {
+        width: 98%;
+    }
+}
 
 
